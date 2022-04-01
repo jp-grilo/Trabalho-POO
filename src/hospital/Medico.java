@@ -28,31 +28,31 @@ public class Medico extends Pessoa{
 
     @Override
     public void setIdade(int idade) {
-        super.setIdade(idade); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.setIdade(idade);
     }
 
     @Override
     public int getIdade() {
-        return super.getIdade(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return super.getIdade();
     }
 
     @Override
     public void setCpf(String cpf) {
-        super.setCpf(cpf); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.setCpf(cpf);
     }
 
     @Override
     public String getCpf() {
-        return super.getCpf(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return super.getCpf();
     }
 
     @Override
     public void setNome(String nome) {
-        super.setNome(nome); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.setNome(nome); 
     }
 
     @Override
     public String getNome() {
-        return super.getNome(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return super.getNome();
     }
 }
