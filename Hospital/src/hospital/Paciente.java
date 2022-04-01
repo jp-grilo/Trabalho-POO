@@ -2,29 +2,55 @@ package hospital;
 
 import java.util.Objects;
 
-public class Paciente {
-    private String nome;
-    private String cpf;
-    private int idade;
+public class Paciente extends Pessoa{
     private int gravidade;
     private double prioridade;
 
     public Paciente(String nome, String cpf, int idade, int gravidade) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.idade = idade;
+        super(nome, cpf, idade);
         this.gravidade = gravidade;
+        prio(idade, gravidade);
     }
     
-    private void DeterminaPrio(){
-        if (this.idade>10 || this.idade<45){
-            this.prioridade = this.idade*this.gravidade*0.7;
+    protected void prio(int idade, int gravidade){
+        if(idade>13 && idade<61){
+            this.prioridade=idade*gravidade;
+        }else{
+            this.prioridade=idade*gravidade*1.2;
         }
-        else {
-            this.prioridade = this.idade*this.gravidade;
-        }
+        
+    }
+    
+    @Override
+    public void setIdade(int idade) {
+        super.setIdade(idade);
     }
 
+    @Override
+    public int getIdade() {
+        return super.getIdade();
+    }
+
+    @Override
+    public void setCpf(String cpf) {
+        super.setCpf(cpf);
+    }
+
+    @Override
+    public String getCpf() {
+        return super.getCpf();
+    }
+
+    @Override
+    public void setNome(String nome) {
+        super.setNome(nome);
+    }
+
+    @Override
+    public String getNome() {
+        return super.getNome();
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;
@@ -45,7 +71,14 @@ public class Paciente {
             return false;
         }
         final Paciente other = (Paciente) obj;
-        return Objects.equals(this.cpf, other.cpf);
+        return Objects.equals(this.getCpf(), other.getCpf());
     }
+
+    @Override
+    public String toString() {
+        return "Paciente:" + getNome() + ", CPF: " + getCpf() + ", idade: " + getIdade() + ", gravidade: " + gravidade + ", prioridade: " + prioridade;
+    }
+    
+
     
 }
