@@ -2,23 +2,28 @@ package hospital;
 
 import java.util.Objects;
 
-public class Pacientes extends Pessoas{
-    private int gravidade;
-    private double prioridade;
+import java.util.*;
 
-    public Pacientes(String nome, String cpf, int idade, int gravidade) {
+public class Pacientes extends Pessoas{
+    private double prioridade;
+    private String motivoConsulta;
+    private ArrayList<String> prontuario;
+
+    public Pacientes(String nome, String cpf, int idade, int prioridade, String motivo) {
         super(nome, cpf, idade);
-        this.gravidade = gravidade;
-        prio(idade, gravidade);
+        this.prioridade = prioridade;
+        this.motivoConsulta = motivo;
     }
+
     
-    protected void prio(int idade, int gravidade){
-        if(idade>13 && idade<61){
-            this.prioridade=idade*gravidade;
-        }else{
-            this.prioridade=idade*gravidade*1.2;
-        }
+    
+    public ArrayList<String> getProntuario() {
+        return prontuario;
     }
+
+    public void setProntuario(String prontuario) {
+        this.prontuario.add(prontuario);
+    }   
     
     @Override
     public void setIdade(int idade) {
@@ -58,24 +63,13 @@ public class Pacientes extends Pessoas{
         return hash;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Pacientes other = (Pacientes) obj;
-        return Objects.equals(this.getCpf(), other.getCpf());
+    public String resumo(){
+        return "Paciente: " + getNome() + "\nIdade: " + getIdade() + "\nMotivo da consulta: " + motivoConsulta;
     }
 
     @Override
     public String toString() {
-        return "Paciente: " + getNome() + ", CPF: " + getCpf() + ", idade: " + getIdade() + ", gravidade: " + gravidade + ", prioridade: " + prioridade;
+        return "Paciente: " + getNome() + ", CPF: " + getCpf() + ", idade: " + getIdade() + ", prioridade: " + prioridade;
     }
     
 

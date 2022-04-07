@@ -11,6 +11,11 @@ public abstract class Pessoas {
         this.idade = idade;
     }
 
+    public Pessoas() {
+    }
+    
+    
+
     public String getNome() {
         return nome;
     }
