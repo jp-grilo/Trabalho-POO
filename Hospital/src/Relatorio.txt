@@ -1,0 +1,21 @@
+Relatório do hospital TMJ.
+
+Médico de plantão: Julia.
+Foram atendidos 0 hoje. Aqui estão eles:
+
+Paciente: a
+CPF: 1
+Idade: 0
+Prontuario(s)...
+1a: doressnyutadir
+2a: doressnyutadir
+3a: doressnyutadir
+
+Paciente: c
+CPF: 3
+Idade: 0
+Prontuario(s)...
+1a: asdbfasdf
+2a: asdbfasdf
+3a: asdbfasdf
+

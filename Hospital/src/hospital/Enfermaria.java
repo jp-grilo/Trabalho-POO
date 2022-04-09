@@ -1,9 +1,11 @@
  ;package hospital;
 
 import java.util.*;
-
+import java.io.*;
+ 
 public class Enfermaria implements Procedimentos{
-
+    
+    
     public Enfermaria(){}
     
     public void adicionaPacienteAtendimento(ArrayList<Pacientes> Atendimento, HashSet Cadastro){
@@ -14,11 +16,6 @@ public class Enfermaria implements Procedimentos{
         System.out.println("\nDigite o nome, cpf, idade, prioridade e motivo da consulta (separado por ', ').");
         entrada = sc.nextLine();
         info = entrada.split(", ");
-        
-        /*for(String a:info){
-            System.out.println(a);
-        }*/
-
         Atendimento.add(new Pacientes (info[0], info[1], Integer.parseInt(info[2]), Integer.parseInt(info[3]), info[4]));
         atual = Atendimento.get(Atendimento.size()-1);
         adicionaPacienteCadastro(atual, Cadastro);
@@ -27,7 +24,7 @@ public class Enfermaria implements Procedimentos{
     //Recebe um objeto Pacientes e o adiciona ao cadastro de pacientes caso ele ainda não seja cadastrado
     public void adicionaPacienteCadastro(Pacientes atual, HashSet Cadastro){
         if(!Cadastro.contains(atual)){
-            System.out.println("Cadastro de" + atual.getNome() + " não encontrado.");
+            System.out.println("Cadastro de " + atual.getNome() + " não encontrado.");
             Cadastro.add(atual);
             System.out.println("Paciente cadastrado.");
             return;
@@ -49,7 +46,7 @@ public class Enfermaria implements Procedimentos{
         if(!listaCadastro.isEmpty()){
             Iterator i = listaCadastro.iterator();
             while (i.hasNext()){
-                System.out.println(i.next()); 
+                System.out.println(i.next()+"\n"); 
             }
         }
     }
@@ -80,12 +77,10 @@ public class Enfermaria implements Procedimentos{
             Pacientes atual;
             for(int i =0; i<listaAtendimento.size();i++){
                 atual=listaAtendimento.get(i);
-                System.out.println(atual);
-                
+                System.out.println(atual.getNome()); 
             }
             return;
         }
         System.out.println("\nA lista de atendimentos esta vazia");
     }
-    
 }

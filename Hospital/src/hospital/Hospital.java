@@ -8,6 +8,7 @@ public class Hospital {
     
 
 
+    @SuppressWarnings("CallToPrintStackTrace")
     public static void main(String[] args) {
 
         
@@ -18,17 +19,20 @@ public class Hospital {
 
         Pacientes p1 = new Pacientes("a", "1", 0, 0, "a");
         Pacientes p2 = new Pacientes("b", "2", 0, 0, "a");
-        Pacientes p3 = new Pacientes("b", "3", 0, 0, "a");
-
-
+        Pacientes p3 = new Pacientes("c", "3", 0, 0, "a");
         cadastro.add(p1);
         cadastro.add(p2);
         cadastro.add(p3);
+        p1.addProntuario("doressnyutadir");
+        p1.addProntuario("doressnyutadir");
+        p1.addProntuario("doressnyutadir");
+        p3.addProntuario("asdbfasdf");
+        p3.addProntuario("asdbfasdf");
+        p3.addProntuario("asdbfasdf");
+        //System.out.println(p3.getProntuario());
         
         
         Scanner sc = new Scanner(System.in);
-        
-        
         int menu = 0;
         while(menu!=3){    
             switch (menu){
@@ -37,7 +41,6 @@ public class Hospital {
                     System.out.println("\n\n------------Menu do hospital TMJ-------------\nDigite o número correspondente ao seu cargo\n(1) Enfermeiro(a)\n(2) Médico(a)\n(3) Para encerrar o programa e gerar o relatório");
                     menu = sc.nextInt();
                     break;
-                
                     
                 case 1: // ENFERMEIRO
                     int menu_enfermaria;
@@ -89,8 +92,6 @@ public class Hospital {
                 System.out.println("Até a próxima!\n");
                 menu=0;
                 break;
-                
-                    
                     
                 case 2: // MÉDICO
                     int menu_medico;
@@ -120,13 +121,11 @@ public class Hospital {
                                 
                             case 3: // VER A FILA DE ATENDIMENTO
                                 medico.lerListaAtendimento(atendimento);
-                                System.out.print("Precione enter para seguir");
-                                //sc.next();
                                 menu_medico=0;
                             break;
                                 
                             case 4: // ATENDER O PROXIMO PACIENTE NA FILA
-                                medico.atendimento(atendimento, atendimento.get(0), sc);
+                                medico.atendimento(atendimento, atendimento.get(0));
                                 menu_medico=0;
                             break;
                                
@@ -146,7 +145,31 @@ public class Hospital {
                     menu=0;
                 break;
             }
-        }   
+        }
         
+        try{
+        BufferedWriter bw = new BufferedWriter(
+                new OutputStreamWriter(//adaptar endereço para o usado no momento
+                    new FileOutputStream("C:\\Users\\joaop\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\Relatorio.txt")));
+        
+        bw.write("Relatório do hospital TMJ.\n\nMédico de plantão: " + medico.getNome() + ".\n");
+        bw.write("Foram atendidos " + medico.nPacientesAtendidos() + " hoje. Aqui estão eles:\n\n");
+        
+        for(Pacientes atual : cadastro){
+            if(atual.prontuarioVazio()){
+                bw.write(atual.toString()+"\nProntuario(s)...\n");
+                int nProntuario=1;
+                for(String descricao: atual.getProntuario()){
+                    bw.write(+nProntuario + "a: " +descricao+"\n");
+                    nProntuario++;
+                }
+                bw.write("\n");
+            }
+        }
+        
+        bw.close();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }    
 }

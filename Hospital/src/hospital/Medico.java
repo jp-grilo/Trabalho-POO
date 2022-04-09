@@ -3,13 +3,15 @@ package hospital;
 import java.util.*;
 
 public class Medico extends Pessoas implements Procedimentos{
-    private ArrayList<Pacientes> paciente;
-
+    private ArrayList<Pacientes> pacientesAtendidos = new ArrayList<>();
     
     public Medico(String nome, String cpf, int idade) {
         super(nome, cpf, idade);
     }
     
+    public int nPacientesAtendidos(){
+        return pacientesAtendidos.size();
+    }
     
     
     @Override
@@ -22,11 +24,13 @@ public class Medico extends Pessoas implements Procedimentos{
     
     /*Recebe a fila de atendiemtno, um objeto Pacientes e o scanner e adiciona uma String diagnóstico para a lista de prontuário desse objeto, 
     além disso tamém remove o paciente da fila de atendimento (não confundir com o Cadastro).*/
-    public void atendimento(ArrayList filaAtendimento, Pacientes paciente, Scanner sc){
+    public void atendimento(ArrayList filaAtendimento, Pacientes paciente){
+        Scanner sc = new Scanner(System.in);
         paciente.resumo();
         System.out.println("Qual o diagnostico do paciente?");
         String prontuario = sc.nextLine(); /*implementar exceção de prontuario vazio*/
         paciente.addProntuario(prontuario);
+        pacientesAtendidos.add(paciente);
         boolean remove = filaAtendimento.remove(paciente); /*implementar exceção caso falha ocorra*/
     }
 
@@ -36,7 +40,7 @@ public class Medico extends Pessoas implements Procedimentos{
         if(!listaCadastro.isEmpty()){
             Iterator i = listaCadastro.iterator();
             while (i.hasNext()){
-                System.out.println(i.next()); 
+                System.out.println(i.next()+"\n"); 
             }
         }
     }
@@ -68,7 +72,7 @@ public class Medico extends Pessoas implements Procedimentos{
             Pacientes atual;
             for(int i =0; i<listaAtendimento.size();i++){
                 atual=listaAtendimento.get(i);
-                System.out.println(atual);
+                System.out.println(atual.getNome());
                 
             }
             return;

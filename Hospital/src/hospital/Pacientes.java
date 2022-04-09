@@ -5,8 +5,9 @@ import java.util.*;
 public class Pacientes extends Pessoas{
     private double prioridade;
     private String motivoConsulta;
-    private ArrayList<String> prontuario;
+    private ArrayList<String> prontuario = new ArrayList<>();
 
+    
     public Pacientes(String nome, String cpf, int idade, int prioridade, String motivo) {
         super(nome, cpf, idade);
         this.prioridade = prioridade;
@@ -14,6 +15,9 @@ public class Pacientes extends Pessoas{
     }
 
     
+    public boolean prontuarioVazio(){
+        return !this.prontuario.isEmpty();
+    }
     
     public ArrayList<String> getProntuario() {
         return prontuario;
@@ -23,20 +27,10 @@ public class Pacientes extends Pessoas{
         this.prontuario.add(prontuario);
         System.out.println("Prontuário atualizado com sucesso!");
     }   
-    
-    @Override
-    public void setIdade(int idade) {
-        super.setIdade(idade);
-    }
 
     @Override
     public int getIdade() {
         return super.getIdade();
-    }
-
-    @Override
-    public void setCpf(String cpf) {
-        super.setCpf(cpf);
     }
 
     @Override
@@ -45,14 +39,11 @@ public class Pacientes extends Pessoas{
     }
 
     @Override
-    public void setNome(String nome) {
-        super.setNome(nome);
-    }
-
-    @Override
     public String getNome() {
         return super.getNome();
     }
+    
+    
     
         @Override
     public boolean equals(Object obj) {
@@ -82,9 +73,7 @@ public class Pacientes extends Pessoas{
 
     @Override
     public String toString() {
-        return "Paciente: " + getNome() + ", CPF: " + getCpf() + ", idade: " + getIdade();
+        return "Paciente: " + getNome() + "\nCPF: " + getCpf() + "\nIdade: " + getIdade();
     }
-    
-
     
 }
