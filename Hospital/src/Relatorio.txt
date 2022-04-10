@@ -1,7 +1,13 @@
 Relatório do hospital TMJ.
 
 Médico de plantão: Julia.
-Foram atendidos 0 hoje. Aqui estão eles:
+Foram atendidos 3 hoje. Aqui estão eles:
+
+Paciente: b
+CPF: 2
+Idade: 0
+Prontuario(s)...
+1a: fa�a muito sexo meu filho. Macete elas
 
 Paciente: a
 CPF: 1
@@ -10,6 +16,7 @@ Prontuario(s)...
 1a: doressnyutadir
 2a: doressnyutadir
 3a: doressnyutadir
+4a: � isso ai mano no seu caso voc� vai morrer
 
 Paciente: c
 CPF: 3
@@ -18,4 +25,5 @@ Prontuario(s)...
 1a: asdbfasdf
 2a: asdbfasdf
 3a: asdbfasdf
+4a: Morte s�bta. sem papo pra tu
 

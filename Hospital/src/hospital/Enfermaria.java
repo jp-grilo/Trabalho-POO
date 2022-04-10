@@ -27,8 +27,8 @@ public class Enfermaria implements Procedimentos{
         info = entrada.split(", ");
         
         Atendimento.add(new Pacientes (info[0], info[1], Integer.parseInt(info[2]), Integer.parseInt(info[3]), info[4]));
+        if(Atendimento.size()>1) ordenaAtendimento(Atendimento);
         
-        ordenaAtendimento(Atendimento);
         atual = Atendimento.get(Atendimento.size()-1);
         adicionaPacienteCadastro(atual, Cadastro);
     }

@@ -26,7 +26,7 @@ public class Medico extends Pessoas implements Procedimentos{
     além disso tamém remove o paciente da fila de atendimento (não confundir com o Cadastro).*/
     public void atendimento(ArrayList filaAtendimento, Pacientes paciente){
         Scanner sc = new Scanner(System.in);
-        paciente.resumo();
+        System.out.println(paciente.resumo());
         System.out.println("Qual o diagnostico do paciente?");
         String prontuario = sc.nextLine(); /*implementar exceção de prontuario vazio*/
         paciente.addProntuario(prontuario);
