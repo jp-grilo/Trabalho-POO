@@ -6,9 +6,6 @@ import java.util.*;
 
 public class Hospital {
     
-
-
-    @SuppressWarnings("CallToPrintStackTrace")
     public static void main(String[] args) {
 
         
