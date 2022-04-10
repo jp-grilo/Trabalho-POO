@@ -3,7 +3,7 @@ package hospital;
 import java.util.*;
 
 public class Pacientes extends Pessoas{
-    private double prioridade;
+    private int prioridade;
     private String motivoConsulta;
     private ArrayList<String> prontuario = new ArrayList<>();
 
@@ -42,8 +42,10 @@ public class Pacientes extends Pessoas{
     public String getNome() {
         return super.getNome();
     }
-    
-    
+
+    public int getPrioridade() {
+        return prioridade;
+    }
     
         @Override
     public boolean equals(Object obj) {
@@ -62,8 +64,7 @@ public class Pacientes extends Pessoas{
     
         @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.cpf);
+        int hash = this.prioridade;
         return hash;
     }
 

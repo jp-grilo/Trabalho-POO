@@ -17,12 +17,17 @@ public class Hospital {
         Enfermaria enfermaria =  new Enfermaria();
         Medico medico = new Medico("Julia", "12345678912", 27); 
 
-        Pacientes p1 = new Pacientes("a", "1", 0, 0, "a");
-        Pacientes p2 = new Pacientes("b", "2", 0, 0, "a");
-        Pacientes p3 = new Pacientes("c", "3", 0, 0, "a");
+        Pacientes p1 = new Pacientes("a", "1", 0, 3, "a");
+        Pacientes p2 = new Pacientes("b", "2", 0, 2, "a");
+        Pacientes p3 = new Pacientes("c", "3", 0, 5, "a");
+        
         cadastro.add(p1);
         cadastro.add(p2);
         cadastro.add(p3);
+        atendimento.add(p1);
+        atendimento.add(p2);
+        atendimento.add(p3);
+        
         p1.addProntuario("doressnyutadir");
         p1.addProntuario("doressnyutadir");
         p1.addProntuario("doressnyutadir");
@@ -61,6 +66,7 @@ public class Hospital {
                             //adicionar o paciente a fila de atendimento. Caso o paciente não conste no sistema de cadastro, ele deverá ser cadastrado antes de ser adicionado a fila de atendimento
                             case 1:                        
                                 enfermaria.adicionaPacienteAtendimento(atendimento, cadastro);
+                                
                                 menu_enfermaria=0;
                             break;
                             

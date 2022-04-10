@@ -8,15 +8,27 @@ public class Enfermaria implements Procedimentos{
     
     public Enfermaria(){}
     
+    public void ordenaAtendimento(ArrayList<Pacientes> Atendimento){
+        Collections.sort(Atendimento, new Comparator<Pacientes>(){
+            public int compare(Pacientes p1, Pacientes p2){
+                return Integer.valueOf(p1.getPrioridade()).compareTo(p2.getPrioridade());
+            }
+        });
+    }
+    
     public void adicionaPacienteAtendimento(ArrayList<Pacientes> Atendimento, HashSet Cadastro){
         Scanner sc = new Scanner(System.in);
         Pacientes atual;
         String entrada;
         String [] info;
+        
         System.out.println("\nDigite o nome, cpf, idade, prioridade e motivo da consulta (separado por ', ').");
         entrada = sc.nextLine();
         info = entrada.split(", ");
+        
         Atendimento.add(new Pacientes (info[0], info[1], Integer.parseInt(info[2]), Integer.parseInt(info[3]), info[4]));
+        
+        ordenaAtendimento(Atendimento);
         atual = Atendimento.get(Atendimento.size()-1);
         adicionaPacienteCadastro(atual, Cadastro);
     }
