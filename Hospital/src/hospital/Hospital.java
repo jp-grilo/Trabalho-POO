@@ -147,8 +147,8 @@ public class Hospital {
             }
         }
         
-        try{
-        BufferedWriter bw = new BufferedWriter(
+        enfermaria.gerarRelatorio(medico, cadastro);
+        /*BufferedWriter bw = new BufferedWriter(
                 new OutputStreamWriter(//adaptar endereço para o usado no momento
                     new FileOutputStream("C:\\Users\\joaop\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\Relatorio.txt")));
         
@@ -167,9 +167,7 @@ public class Hospital {
             }
         }
         
-        bw.close();
-        }catch(IOException ex){
-            ex.printStackTrace();
-        }
+        bw.close();*/
+        
     }    
 }

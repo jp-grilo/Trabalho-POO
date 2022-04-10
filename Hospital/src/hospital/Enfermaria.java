@@ -83,4 +83,31 @@ public class Enfermaria implements Procedimentos{
         }
         System.out.println("\nA lista de atendimentos esta vazia");
     }
+    
+    public void gerarRelatorio(Medico medico, HashSet<Pacientes> cadastro){
+        try{
+        BufferedWriter bw = new BufferedWriter(
+                new OutputStreamWriter(//adaptar endereço para o usado no momento
+                    new FileOutputStream("C:\\Users\\joaop\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\Relatorio.txt")));
+        
+        bw.write("Relatório do hospital TMJ.\n\nMédico de plantão: " + medico.getNome() + ".\n");
+        bw.write("Foram atendidos " + medico.nPacientesAtendidos() + " hoje. Aqui estão eles:\n\n");
+        
+        for(Pacientes atual : cadastro){
+            if(atual.prontuarioVazio()){
+                bw.write(atual.toString()+"\nProntuario(s)...\n");
+                int nProntuario=1;
+                for(String descricao: atual.getProntuario()){
+                    bw.write(+nProntuario + "a: " +descricao+"\n");
+                    nProntuario++;
+                }
+                bw.write("\n");
+            }
+        }
+        bw.close();
+        
+        }catch(IOException error){
+            error.printStackTrace();
+        }
+    }
 }
