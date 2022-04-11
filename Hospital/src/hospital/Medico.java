@@ -24,14 +24,24 @@ public class Medico extends Pessoas implements Procedimentos{
     
     /*Recebe a fila de atendiemtno, um objeto Pacientes e o scanner e adiciona uma String diagnóstico para a lista de prontuário desse objeto, 
     além disso tamém remove o paciente da fila de atendimento (não confundir com o Cadastro).*/
-    public void atendimento(ArrayList filaAtendimento, Pacientes paciente){
+    public void atendimento(ArrayList<Pacientes> filaAtendimento) throws EmptyProntuarioExcpetion, ServiceFailureException{
         Scanner sc = new Scanner(System.in);
+        Pacientes paciente = filaAtendimento.get(0);
         System.out.println(paciente.resumo());
         System.out.println("Qual o diagnostico do paciente?");
-        String prontuario = sc.nextLine(); /*implementar exceção de prontuario vazio*/
+        String prontuario = sc.nextLine();
+        while("".equals(prontuario) || prontuario == null){
+            throw new EmptyProntuarioExcpetion();
+        }
         paciente.addProntuario(prontuario);
         pacientesAtendidos.add(paciente);
-        boolean remove = filaAtendimento.remove(paciente); /*implementar exceção caso falha ocorra*/
+        boolean remove = filaAtendimento.remove(paciente);
+        if(remove == true){
+            System.out.println("Paciente atendido e removido da fila de atendimento com sucesso!");
+        }
+        else{
+            throw new ServiceFailureException(filaAtendimento,paciente);
+        }
     }
 
     //Recebe a lista de pacientes cadastrados e retorna os pacientes da lista no terminal
@@ -79,17 +89,6 @@ public class Medico extends Pessoas implements Procedimentos{
         }
         System.out.println("\nA lista de atendimentos esta vazia");
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     @Override
     public int getIdade() {
@@ -110,7 +109,4 @@ public class Medico extends Pessoas implements Procedimentos{
     public String toString() {
         return "Medico: " + this.getNome() + ", CPF: " + this.getCpf() + ", idade: " + this.getIdade();
     }
-
-    
-    
 }
