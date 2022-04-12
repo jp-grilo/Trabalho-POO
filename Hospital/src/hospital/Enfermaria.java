@@ -16,7 +16,7 @@ public class Enfermaria implements Procedimentos{
         });
     }
     
-    public void adicionaPacienteAtendimento(ArrayList<Pacientes> Atendimento, HashSet Cadastro){
+    public void adicionaPacienteAtendimento(ArrayList<Pacientes> Atendimento, HashSet<Pacientes> Cadastro){
         Scanner sc = new Scanner(System.in);
         Pacientes atual;
         String entrada;
@@ -26,7 +26,15 @@ public class Enfermaria implements Procedimentos{
         entrada = sc.nextLine();
         info = entrada.split("; ");
         
+        for(Pacientes p : Atendimento){
+            if(info[1].equals(p.getCpf())){
+                System.out.println("Erro: Já existe um paciente com esse CPF na lista de atendimento.");
+                return;
+            }
+        }
+        
         Atendimento.add(new Pacientes (info[0], info[1], Integer.parseInt(info[2]), Integer.parseInt(info[3]), info[4]));
+        
         atual = Atendimento.get(Atendimento.size()-1);
         adicionaPacienteCadastro(atual, Cadastro);
         if(Atendimento.size()>1) ordenaAtendimento(Atendimento);
@@ -95,11 +103,13 @@ public class Enfermaria implements Procedimentos{
         System.out.println("\nA lista de atendimentos esta vazia");
     }
     
+    String pathRelatorio = "C:\\Users\\maria\\Desktop\\POO\\Hospital\\src\\Relatorio.txt";
+    
     public void gerarRelatorio(Medico medico, HashSet<Pacientes> cadastro){
         try{
         BufferedWriter bw = new BufferedWriter(
                 new OutputStreamWriter(//adaptar endereço para o usado no momento
-                    new FileOutputStream("C:\\Users\\joaop\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\Relatorio.txt")));
+                    new FileOutputStream(pathRelatorio)));
         
         bw.write("Relatório do hospital TMJ.\n\nMédico de plantão: " + medico.getNome() + ".\n");
         bw.write("Foram atendidos " + medico.nPacientesAtendidos() + " pacientes hoje. Aqui estão eles:\n\n");

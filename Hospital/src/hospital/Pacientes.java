@@ -25,7 +25,7 @@ public class Pacientes extends Pessoas{
 
     public void addProntuario(String prontuario) {
         this.prontuario.add(prontuario);
-        System.out.println("Prontuário atualizado com sucesso!");
+        System.out.println("\nProntuário atualizado com sucesso!");
     }   
 
     @Override
@@ -69,12 +69,12 @@ public class Pacientes extends Pessoas{
     }
 
     public String resumo(){
-        return "Paciente: " + getNome() + "\nIdade: " + getIdade() + "\nMotivo da consulta: " + motivoConsulta;
+        return "\nPaciente: " + getNome() + "\nIdade: " + getIdade() + "\nMotivo da consulta: " + motivoConsulta;
     }
 
     @Override
     public String toString() {
-        return "Paciente: " + getNome() + "\nCPF: " + getCpf() + "\nIdade: " + getIdade();
+        return "\nPaciente: " + getNome() + "\nCPF: " + getCpf() + "\nIdade: " + getIdade();
     }
     
 }
