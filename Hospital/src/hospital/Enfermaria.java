@@ -1,4 +1,4 @@
- ;package hospital;
+package hospital;
 
 import java.util.*;
 import java.io.*;
@@ -22,15 +22,14 @@ public class Enfermaria implements Procedimentos{
         String entrada;
         String [] info;
         
-        System.out.println("\nDigite o nome, cpf, idade, prioridade e motivo da consulta (separado por ', ').");
+        System.out.println("\nDigite o nome, cpf, idade, prioridade e motivo da consulta (separado por '; ').");
         entrada = sc.nextLine();
-        info = entrada.split(", ");
+        info = entrada.split("; ");
         
         Atendimento.add(new Pacientes (info[0], info[1], Integer.parseInt(info[2]), Integer.parseInt(info[3]), info[4]));
-        if(Atendimento.size()>1) ordenaAtendimento(Atendimento);
-        
         atual = Atendimento.get(Atendimento.size()-1);
         adicionaPacienteCadastro(atual, Cadastro);
+        if(Atendimento.size()>1) ordenaAtendimento(Atendimento);
     }
     
     //Recebe um objeto Pacientes e o adiciona ao cadastro de pacientes caso ele ainda não seja cadastrado
@@ -45,7 +44,7 @@ public class Enfermaria implements Procedimentos{
     }
     
     @Override
-    public String leCpf(Scanner sc){
+    public String lerCpf(Scanner sc){
         System.out.print("Digite o CPF a ser buscado(0 para cancelar).\n:");
         String acpf;
         acpf = sc.next();
@@ -66,7 +65,7 @@ public class Enfermaria implements Procedimentos{
     //Recebe a lista de pacientes cadastrados e um Scanner, retorna as informações desse paciente no terminal caso o encontre, do contrário, informa que não há registros desse paciente
     @Override
     public void lerPacienteCadastro(HashSet<Pacientes> listaCadastro,Scanner sc){
-        String acpf = leCpf(sc);
+        String acpf = lerCpf(sc);
         if("0".equals(acpf)){
             System.out.println("Cancelando busca.");
             return;
@@ -103,7 +102,7 @@ public class Enfermaria implements Procedimentos{
                     new FileOutputStream("C:\\Users\\joaop\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\Relatorio.txt")));
         
         bw.write("Relatório do hospital TMJ.\n\nMédico de plantão: " + medico.getNome() + ".\n");
-        bw.write("Foram atendidos " + medico.nPacientesAtendidos() + " hoje. Aqui estão eles:\n\n");
+        bw.write("Foram atendidos " + medico.nPacientesAtendidos() + " pacientes hoje. Aqui estão eles:\n\n");
         
         for(Pacientes atual : cadastro){
             if(atual.prontuarioVazio()){

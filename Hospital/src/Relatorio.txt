@@ -3,11 +3,6 @@ Relatório do hospital TMJ.
 Médico de plantão: Julia.
 Foram atendidos 3 hoje. Aqui estão eles:
 
-Paciente: b
-CPF: 2
-Idade: 0
-Prontuario(s)...
-1a: fa�a muito sexo meu filho. Macete elas
 
 Paciente: a
 CPF: 1

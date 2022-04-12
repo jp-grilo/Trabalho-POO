@@ -23,7 +23,7 @@ public class Hospital {
                         System.out.println("\n\n------------Menu do hospital TMJ-------------\nDigite o número correspondente ao seu cargo\n(1) Enfermeiro(a)\n(2) Médico(a)\n(3) Para encerrar o programa e gerar o relatório");
                         menu = sc.nextInt();
                         if(menu==3 && !atendimento.isEmpty()){
-                            System.out.println("Não é possível encerrar o espediente sem atender a todos os pacientes");
+                            System.out.println("Não é possível encerrar o expediente sem atender a todos os pacientes");
                             menu=0;
                         }
                         break;
@@ -132,14 +132,14 @@ public class Hospital {
                     break;
                 }
             }  
-            System.out.println("Encerrando o espediente e gerando o relatório do dia. Até uma próxima!");
-            enfermaria.gerarRelatorio(medico, cadastro);       
+            System.out.println("Encerrando o expediente e gerando o relatório do dia. Até uma próxima!");
+                 
         }catch(EmptyProntuarioExcpetion | ServiceFailureException error1){
             System.out.println(error1);
             while(!atendimento.isEmpty()){
             try{medico.atendimento(atendimento);}catch(EmptyProntuarioExcpetion | ServiceFailureException error2){System.out.println(error1);}}
+        } finally{
+            enfermaria.gerarRelatorio(medico, cadastro);  
         }
-        
-        
     }    
 }
